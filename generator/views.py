@@ -1,6 +1,9 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import requests
+from django.shortcuts import render
+
+
 
 class TextTo3DAPIView(APIView):
     def post(self, request):
@@ -14,3 +17,7 @@ class TextTo3DAPIView(APIView):
         
         model_url = response.json().get("model_url")
         return Response({"model_url": model_url})
+
+
+def index(request):
+    return render(request, 'generator/index.html')

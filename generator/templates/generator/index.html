@@ -1,0 +1,29 @@
+<form id="textForm">
+  <input
+    type="text"
+    name="text"
+    placeholder="Describe your 3D model..."
+    required
+  />
+  <button type="submit">Generate</button>
+</form>
+
+<div id="modelContainer"></div>
+
+<script>
+  document
+    .getElementById("textForm")
+    .addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const text = e.target.text.value;
+      const res = await fetch("/api/generate/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text }),
+      });
+      const data = await res.json();
+      document.getElementById("modelContainer").innerHTML = `
+    <iframe src="${data.model_url}" width="640" height="480" frameborder="0" allowfullscreen></iframe>
+  `;
+    });
+</script>

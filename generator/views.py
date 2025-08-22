@@ -9,7 +9,7 @@ class TextTo3DAPIView(APIView):
     def post(self, request):
         prompt = request.data.get("text")
         headers = {
-            "Authorization": "Bearer YOUR_MESHY_API_KEY",
+            "Authorization": "Bearer msy_lSiXV2MMtFmsAhB3zF8VfwiSOiqI3MuwXLtw",
             "Content-Type": "application/json"
         }
         data = {"prompt": prompt}
